@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 from database import engine, Base
-from app.routers import empresa as e
+from app.routers import empresa as e, book as b
 from app.models import user, empresa, borrow, book
 
 app = FastAPI()
@@ -16,6 +16,7 @@ def check_api():
 
 
 app.include_router(e.router)
+app.include_router(b.router)
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="127.0.0.1", port=5000, reload=True)
