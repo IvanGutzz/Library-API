@@ -224,7 +224,7 @@ def atualizar_empresa(empresa_id: int, empresa_update: EmpresaUpdate, db: Sessio
         )
 
     # Atualiza os campos fornecidos
-    update_data = empresa_update.dict(exclude_unset=True)
+    update_data = empresa_update.model_dump(exclude_unset=True)
 
     if "cnpj" in update_data:
         update_data["cnpj"] = re.sub(r'[^0-9]', '', update_data["cnpj"])
